@@ -58,6 +58,7 @@ class CustomPresentationController: UIPresentationController {
     override var presentedView: UIView? {
         let v = self.presentedViewController.view
         v?.layer.cornerRadius = 5
+        v?.clipsToBounds = true
         return v
     }
 }

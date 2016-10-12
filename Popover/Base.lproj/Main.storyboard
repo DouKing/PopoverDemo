@@ -106,7 +106,7 @@
         <!--Navigation Controller-->
         <scene sceneID="wet-Jg-GZZ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m2z-YK-nyp" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SecondNav" automaticallyAdjustsScrollViewInsets="NO" id="m2z-YK-nyp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8KP-wX-bPq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
