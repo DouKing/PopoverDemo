@@ -8,28 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		003112AD1DAA1E9700DC5FD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003112AC1DAA1E9700DC5FD0 /* AppDelegate.swift */; };
-		003112AF1DAA1E9700DC5FD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003112AE1DAA1E9700DC5FD0 /* ViewController.swift */; };
 		003112B21DAA1E9700DC5FD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003112B01DAA1E9700DC5FD0 /* Main.storyboard */; };
 		003112B41DAA1E9700DC5FD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 003112B31DAA1E9700DC5FD0 /* Assets.xcassets */; };
 		003112B71DAA1E9700DC5FD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003112B51DAA1E9700DC5FD0 /* LaunchScreen.storyboard */; };
-		003112BF1DAA1EFA00DC5FD0 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003112BE1DAA1EFA00DC5FD0 /* PopoverViewController.swift */; };
-		00735C601DACDCF9001AC4C1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00735C5F1DACDCF9001AC4C1 /* SecondViewController.swift */; };
-		00735C621DACDF96001AC4C1 /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00735C611DACDF96001AC4C1 /* CustomPresentationController.swift */; };
-		00735C641DACFC3D001AC4C1 /* CustomTranstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00735C631DACFC3D001AC4C1 /* CustomTranstion.swift */; };
+		00B367E01DC323AF006F3587 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B367DF1DC323AF006F3587 /* DetailViewController.swift */; };
+		00F559511DC2283C0055F969 /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F5594D1DC2283C0055F969 /* CustomPresentationController.swift */; };
+		00F559521DC2283C0055F969 /* CustomTranstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F5594E1DC2283C0055F969 /* CustomTranstion.swift */; };
+		00F559531DC2283C0055F969 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F5594F1DC2283C0055F969 /* PopoverViewController.swift */; };
+		00F559541DC2283C0055F969 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F559501DC2283C0055F969 /* SecondViewController.swift */; };
+		00F559561DC228600055F969 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F559551DC228600055F969 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		003112A91DAA1E9700DC5FD0 /* Popover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Popover.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		003112AC1DAA1E9700DC5FD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		003112AE1DAA1E9700DC5FD0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		003112B11DAA1E9700DC5FD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		003112B31DAA1E9700DC5FD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		003112B61DAA1E9700DC5FD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		003112B81DAA1E9700DC5FD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		003112BE1DAA1EFA00DC5FD0 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
-		00735C5F1DACDCF9001AC4C1 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		00735C611DACDF96001AC4C1 /* CustomPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
-		00735C631DACFC3D001AC4C1 /* CustomTranstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTranstion.swift; sourceTree = "<group>"; };
+		00B367DF1DC323AF006F3587 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		00F5594D1DC2283C0055F969 /* CustomPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
+		00F5594E1DC2283C0055F969 /* CustomTranstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTranstion.swift; sourceTree = "<group>"; };
+		00F5594F1DC2283C0055F969 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		00F559501DC2283C0055F969 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		00F559551DC228600055F969 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,18 +64,35 @@
 		003112AB1DAA1E9700DC5FD0 /* Popover */ = {
 			isa = PBXGroup;
 			children = (
+				00B367DE1DC3236D006F3587 /* Popover */,
+				00F5594C1DC2283C0055F969 /* Excise */,
 				003112AC1DAA1E9700DC5FD0 /* AppDelegate.swift */,
-				003112AE1DAA1E9700DC5FD0 /* ViewController.swift */,
-				00735C5F1DACDCF9001AC4C1 /* SecondViewController.swift */,
-				003112BE1DAA1EFA00DC5FD0 /* PopoverViewController.swift */,
-				00735C611DACDF96001AC4C1 /* CustomPresentationController.swift */,
-				00735C631DACFC3D001AC4C1 /* CustomTranstion.swift */,
+				00B367DF1DC323AF006F3587 /* DetailViewController.swift */,
 				003112B01DAA1E9700DC5FD0 /* Main.storyboard */,
 				003112B31DAA1E9700DC5FD0 /* Assets.xcassets */,
 				003112B51DAA1E9700DC5FD0 /* LaunchScreen.storyboard */,
 				003112B81DAA1E9700DC5FD0 /* Info.plist */,
 			);
 			path = Popover;
+			sourceTree = "<group>";
+		};
+		00B367DE1DC3236D006F3587 /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Popover;
+			sourceTree = "<group>";
+		};
+		00F5594C1DC2283C0055F969 /* Excise */ = {
+			isa = PBXGroup;
+			children = (
+				00F559551DC228600055F969 /* ViewController.swift */,
+				00F5594D1DC2283C0055F969 /* CustomPresentationController.swift */,
+				00F5594E1DC2283C0055F969 /* CustomTranstion.swift */,
+				00F5594F1DC2283C0055F969 /* PopoverViewController.swift */,
+				00F559501DC2283C0055F969 /* SecondViewController.swift */,
+			);
+			path = Excise;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,12 +167,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00735C601DACDCF9001AC4C1 /* SecondViewController.swift in Sources */,
-				003112AF1DAA1E9700DC5FD0 /* ViewController.swift in Sources */,
-				003112BF1DAA1EFA00DC5FD0 /* PopoverViewController.swift in Sources */,
-				00735C621DACDF96001AC4C1 /* CustomPresentationController.swift in Sources */,
+				00F559561DC228600055F969 /* ViewController.swift in Sources */,
+				00F559531DC2283C0055F969 /* PopoverViewController.swift in Sources */,
+				00F559511DC2283C0055F969 /* CustomPresentationController.swift in Sources */,
 				003112AD1DAA1E9700DC5FD0 /* AppDelegate.swift in Sources */,
-				00735C641DACFC3D001AC4C1 /* CustomTranstion.swift in Sources */,
+				00F559541DC2283C0055F969 /* SecondViewController.swift in Sources */,
+				00F559521DC2283C0055F969 /* CustomTranstion.swift in Sources */,
+				00B367E01DC323AF006F3587 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
