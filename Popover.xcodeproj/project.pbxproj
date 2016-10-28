@@ -12,6 +12,8 @@
 		003112B41DAA1E9700DC5FD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 003112B31DAA1E9700DC5FD0 /* Assets.xcassets */; };
 		003112B71DAA1E9700DC5FD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003112B51DAA1E9700DC5FD0 /* LaunchScreen.storyboard */; };
 		00B367E01DC323AF006F3587 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B367DF1DC323AF006F3587 /* DetailViewController.swift */; };
+		00B367E41DC32474006F3587 /* WYPopoverPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B367E31DC32474006F3587 /* WYPopoverPresentationController.m */; };
+		00B367E71DC324A7006F3587 /* WYPopoverAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B367E61DC324A7006F3587 /* WYPopoverAnimator.m */; };
 		00F559511DC2283C0055F969 /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F5594D1DC2283C0055F969 /* CustomPresentationController.swift */; };
 		00F559521DC2283C0055F969 /* CustomTranstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F5594E1DC2283C0055F969 /* CustomTranstion.swift */; };
 		00F559531DC2283C0055F969 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F5594F1DC2283C0055F969 /* PopoverViewController.swift */; };
@@ -27,6 +29,11 @@
 		003112B61DAA1E9700DC5FD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		003112B81DAA1E9700DC5FD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00B367DF1DC323AF006F3587 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		00B367E11DC32474006F3587 /* Popover-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Popover-Bridging-Header.h"; path = "Popover/Popover-Bridging-Header.h"; sourceTree = "<group>"; };
+		00B367E21DC32474006F3587 /* WYPopoverPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverPresentationController.h; sourceTree = "<group>"; };
+		00B367E31DC32474006F3587 /* WYPopoverPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverPresentationController.m; sourceTree = "<group>"; };
+		00B367E51DC324A7006F3587 /* WYPopoverAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverAnimator.h; sourceTree = "<group>"; };
+		00B367E61DC324A7006F3587 /* WYPopoverAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverAnimator.m; sourceTree = "<group>"; };
 		00F5594D1DC2283C0055F969 /* CustomPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
 		00F5594E1DC2283C0055F969 /* CustomTranstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTranstion.swift; sourceTree = "<group>"; };
 		00F5594F1DC2283C0055F969 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +78,7 @@
 				003112B01DAA1E9700DC5FD0 /* Main.storyboard */,
 				003112B31DAA1E9700DC5FD0 /* Assets.xcassets */,
 				003112B51DAA1E9700DC5FD0 /* LaunchScreen.storyboard */,
+				00B367E11DC32474006F3587 /* Popover-Bridging-Header.h */,
 				003112B81DAA1E9700DC5FD0 /* Info.plist */,
 			);
 			path = Popover;
@@ -79,6 +87,10 @@
 		00B367DE1DC3236D006F3587 /* Popover */ = {
 			isa = PBXGroup;
 			children = (
+				00B367E21DC32474006F3587 /* WYPopoverPresentationController.h */,
+				00B367E31DC32474006F3587 /* WYPopoverPresentationController.m */,
+				00B367E51DC324A7006F3587 /* WYPopoverAnimator.h */,
+				00B367E61DC324A7006F3587 /* WYPopoverAnimator.m */,
 			);
 			path = Popover;
 			sourceTree = "<group>";
@@ -127,6 +139,7 @@
 				TargetAttributes = {
 					003112A81DAA1E9700DC5FD0 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -172,6 +185,8 @@
 				00F559511DC2283C0055F969 /* CustomPresentationController.swift in Sources */,
 				003112AD1DAA1E9700DC5FD0 /* AppDelegate.swift in Sources */,
 				00F559541DC2283C0055F969 /* SecondViewController.swift in Sources */,
+				00B367E41DC32474006F3587 /* WYPopoverPresentationController.m in Sources */,
+				00B367E71DC324A7006F3587 /* WYPopoverAnimator.m in Sources */,
 				00F559521DC2283C0055F969 /* CustomTranstion.swift in Sources */,
 				00B367E01DC323AF006F3587 /* DetailViewController.swift in Sources */,
 			);
@@ -296,11 +311,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Popover/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.secoo.www.Popover;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Popover/Popover/Popover-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -309,11 +327,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Popover/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.secoo.www.Popover;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Popover/Popover/Popover-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
