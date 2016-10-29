@@ -8,6 +8,210 @@
 
 #import "WYPopoverPresentationController.h"
 
+static inline UIColor * WYPopoverBackgroundPresentedColor() {
+    return [UIColor colorWithWhite:0 alpha:0.6];
+}
+
+static inline UIColor * WYPopoverBackgroundDismissColor() {
+    return [UIColor clearColor];
+}
+
+@interface WYPopoverPresentationController ()
+
+@property (nonatomic, strong) UIView *backgroundView;
+@property (nonatomic, strong) UIView *arrowView;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
+
+@end
+
 @implementation WYPopoverPresentationController
+
+- (void)containerViewDidLayoutSubviews {
+    [super containerViewDidLayoutSubviews];
+    self.arrowView.frame = [self sourceViewFrameInContainerView];
+    self.backgroundView.frame = self.containerView.bounds;
+    self.presentedView.frame = self.frameOfPresentedViewInContainerView;
+}
+
+- (void)presentationTransitionWillBegin {
+    [self.containerView insertSubview:self.arrowView atIndex:0];
+    [self.containerView insertSubview:self.backgroundView atIndex:0];
+    [self.backgroundView addGestureRecognizer:self.tapGesture];
+    self.arrowView.alpha = 0;
+    __weak typeof(self) weakSelf = self;
+    [self.presentingViewController.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.backgroundView.backgroundColor = WYPopoverBackgroundPresentedColor();
+        strongSelf.arrowView.alpha = 1;
+    } completion:nil];
+}
+
+- (void)presentationTransitionDidEnd:(BOOL)completed {
+    if (!completed) {
+        [self.backgroundView removeFromSuperview];
+        [self.arrowView removeFromSuperview];
+    }
+}
+
+- (void)dismissalTransitionWillBegin {
+    __weak typeof(self) weakSelf = self;
+    [self.presentingViewController.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.backgroundView.backgroundColor = WYPopoverBackgroundDismissColor();
+        strongSelf.arrowView.alpha = 0;
+    } completion:nil];
+}
+
+- (void)dismissalTransitionDidEnd:(BOOL)completed {
+    if (completed) {
+        [self.backgroundView removeFromSuperview];
+        [self.arrowView removeFromSuperview];
+    }
+}
+
+- (CGRect)frameOfPresentedViewInContainerView {
+    if (!self.containerView) { return CGRectZero; }
+    switch (self.permittedArrowDirections) {
+        case UIPopoverArrowDirectionUp:
+        case UIPopoverArrowDirectionDown:
+        case UIPopoverArrowDirectionLeft:
+        case UIPopoverArrowDirectionRight:
+            return [self _frameOfPresentedViewInContainerViewWithArrowDirection:self.permittedArrowDirections];
+            break;
+        default:
+            return [self _frameOfPresentedViewInContainerViewWithArrowDirection:[self _realArrowDirection]];
+            break;
+    }
+    return CGRectZero;
+}
+
+- (UIView *)presentedView {
+    UIView *v = self.presentedViewController.view;
+    v.layer.cornerRadius = 5;
+    v.clipsToBounds = YES;
+    return v;
+}
+
+#pragma mark - Private Methods
+
+- (CGRect)_frameOfPresentedViewInContainerViewWithArrowDirection:(UIPopoverArrowDirection)permittedArrowDirections {
+    switch (permittedArrowDirections) {
+        case UIPopoverArrowDirectionUp:
+            return [self _downframeOfPresentedViewInContainerView];
+            break;
+        case UIPopoverArrowDirectionDown:
+            return [self _upframeOfPresentedViewInContainerView];
+            break;
+        case UIPopoverArrowDirectionLeft:
+            return [self _rightframeOfPresentedViewInContainerView];
+            break;
+        case UIPopoverArrowDirectionRight:
+            return [self _leftframeOfPresentedViewInContainerView];
+            break;
+        default:
+            return CGRectZero;
+            break;
+    }
+}
+
+- (UIPopoverArrowDirection)_realArrowDirection {
+    CGFloat width = self.presentedViewController.preferredContentSize.width;
+    CGFloat height = self.presentedViewController.preferredContentSize.height;
+    CGRect sourceViewFrameInContainerView = [self sourceViewFrameInContainerView];
+    CGFloat up = CGRectGetMinY(sourceViewFrameInContainerView);
+    CGFloat down = CGRectGetHeight(self.containerView.bounds) - CGRectGetMaxY(sourceViewFrameInContainerView);
+    CGFloat left = CGRectGetMinX(sourceViewFrameInContainerView);
+    CGFloat right = CGRectGetWidth(self.containerView.bounds) - CGRectGetMaxX(sourceViewFrameInContainerView);
+    if (down >= height) {
+        return UIPopoverArrowDirectionUp;
+    } else if (up >= height) {
+        return UIPopoverArrowDirectionDown;
+    } else if (right >= width) {
+        return UIPopoverArrowDirectionLeft;
+    } else if (left >= width) {
+        return UIPopoverArrowDirectionRight;
+    }
+    return UIPopoverArrowDirectionUp;
+}
+
+- (CGRect)_upframeOfPresentedViewInContainerView {
+    CGFloat width = self.presentedViewController.preferredContentSize.width;
+    CGFloat height = self.presentedViewController.preferredContentSize.height;
+    CGRect sourceViewFrameInContainerView = [self sourceViewFrameInContainerView];
+    width = MIN(width, CGRectGetWidth(self.containerView.bounds));
+    height = MIN(height, CGRectGetMinY(sourceViewFrameInContainerView));
+    CGFloat x = sourceViewFrameInContainerView.origin.x + sourceViewFrameInContainerView.size.width / 2.0 - width / 2.0;
+    x = MAX(x, 0);
+    CGFloat y = CGRectGetMinY(sourceViewFrameInContainerView) - height;
+    return CGRectMake(x, y, width, height);
+}
+
+- (CGRect)_downframeOfPresentedViewInContainerView {
+    CGFloat width = self.presentedViewController.preferredContentSize.width;
+    CGFloat height = self.presentedViewController.preferredContentSize.height;
+    CGRect sourceViewFrameInContainerView = [self sourceViewFrameInContainerView];
+    width = MIN(width, CGRectGetWidth(self.containerView.bounds));
+    height = MIN(height, CGRectGetHeight(self.containerView.bounds) - CGRectGetMaxY(sourceViewFrameInContainerView));
+    CGFloat x = sourceViewFrameInContainerView.origin.x + sourceViewFrameInContainerView.size.width / 2.0 - width / 2.0;
+    x = MAX(x, 0);
+    CGFloat y = CGRectGetMaxY(sourceViewFrameInContainerView);
+    return CGRectMake(x, y, width, height);
+}
+
+- (CGRect)_leftframeOfPresentedViewInContainerView {
+    CGFloat width = self.presentedViewController.preferredContentSize.width;
+    CGFloat height = self.presentedViewController.preferredContentSize.height;
+    CGRect sourceViewFrameInContainerView = [self sourceViewFrameInContainerView];
+    width = MIN(width, CGRectGetWidth(self.containerView.bounds) - CGRectGetMinX(sourceViewFrameInContainerView));
+    height = MIN(height, CGRectGetHeight(self.containerView.bounds));
+    CGFloat x = CGRectGetMinX(sourceViewFrameInContainerView) - width;
+    CGFloat y = sourceViewFrameInContainerView.origin.y + sourceViewFrameInContainerView.size.width / 2.0 - height / 2.0;
+    y = MAX(y, 0);
+    return CGRectMake(x, y, width, height);
+}
+
+- (CGRect)_rightframeOfPresentedViewInContainerView {
+    CGFloat width = self.presentedViewController.preferredContentSize.width;
+    CGFloat height = self.presentedViewController.preferredContentSize.height;
+    CGRect sourceViewFrameInContainerView = [self sourceViewFrameInContainerView];
+    width = MIN(width, CGRectGetWidth(self.containerView.bounds) - CGRectGetMinX(sourceViewFrameInContainerView));
+    height = MIN(height, CGRectGetHeight(self.containerView.bounds));
+    CGFloat x = CGRectGetMaxX(sourceViewFrameInContainerView);
+    CGFloat y = sourceViewFrameInContainerView.origin.y + sourceViewFrameInContainerView.size.width / 2.0 - height / 2.0;
+    y = MAX(y, 0);
+    return CGRectMake(x, y, width, height);
+}
+
+- (void)_handleTapGestureAction:(UITapGestureRecognizer *)sender {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (CGRect)sourceViewFrameInContainerView {
+    return [self.containerView convertRect:self.sourceRect fromView:self.sourceView];
+}
+
+- (UIView *)backgroundView {
+    if (!_backgroundView) {
+        _backgroundView = [[UIView alloc] init];
+        _backgroundView.backgroundColor = WYPopoverBackgroundDismissColor();
+    }
+    return _backgroundView;
+}
+
+- (UIView *)arrowView {
+    if (!_arrowView) {
+        _arrowView = [[UIImageView alloc] init];
+        _arrowView.contentMode = UIViewContentModeBottom;
+        _arrowView.backgroundColor = [UIColor redColor];
+    }
+    return _arrowView;
+}
+
+- (UITapGestureRecognizer *)tapGesture {
+    if (!_tapGesture) {
+        _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_handleTapGestureAction:)];
+    }
+    return _tapGesture;
+}
 
 @end

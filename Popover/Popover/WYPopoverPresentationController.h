@@ -10,4 +10,9 @@
 
 @interface WYPopoverPresentationController : UIPresentationController
 
+@property (nonatomic, strong) UIColor *backgroundColor;
+@property (nonatomic, strong) UIView *sourceView;
+@property (nonatomic, assign) CGRect sourceRect;
+@property (nonatomic, assign) UIPopoverArrowDirection permittedArrowDirections;
+
 @end

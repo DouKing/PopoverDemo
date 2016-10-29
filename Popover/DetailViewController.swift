@@ -9,27 +9,29 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    
+    let animator = WYPopoverAnimator()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func _testPopoverAction(_ sender: UIButton) {
+        let vc = PopoverViewController()
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = self.animator
+        vc.wy_popoverPresentationController?.backgroundColor = UIColor.red
+        vc.wy_popoverPresentationController?.sourceView = sender
+        vc.wy_popoverPresentationController?.sourceRect = sender.bounds
+        vc.wy_popoverPresentationController?.permittedArrowDirections = .any
+        
+        self.present(vc, animated: true, completion: nil)
     }
-    */
+    
+}
 
+extension DetailViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return WYPopoverPresentationController(presentedViewController: presented, presenting: presenting)
+    }
 }

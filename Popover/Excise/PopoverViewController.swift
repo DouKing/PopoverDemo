@@ -10,9 +10,11 @@ import UIKit
 
 class PopoverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    weak var tableView: UITableView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = UIColor.cyan
         self.preferredContentSize = CGSize(width: 600, height: 300)
         
         let tableView = UITableView(frame: self.view.bounds, style: .plain)
@@ -20,12 +22,13 @@ class PopoverViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "123")
+        self.tableView = tableView
         self.view.addSubview(tableView)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.tableView?.frame = self.view.bounds
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
