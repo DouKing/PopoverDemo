@@ -180,7 +180,7 @@ static inline UIColor * WYPopoverBackgroundDismissColor() {
     CGFloat width = self.presentedViewController.preferredContentSize.width;
     CGFloat height = self.presentedViewController.preferredContentSize.height;
     CGRect sourceViewFrameInContainerView = [self sourceViewFrameInContainerView];
-    width = MIN(width, CGRectGetWidth(self.containerView.bounds) - CGRectGetMinX(sourceViewFrameInContainerView));
+    width = MIN(width, CGRectGetMinX(sourceViewFrameInContainerView));
     height = MIN(height, CGRectGetHeight(self.containerView.bounds));
     CGFloat x = CGRectGetMinX(sourceViewFrameInContainerView) - width;
     CGFloat y = sourceViewFrameInContainerView.origin.y + sourceViewFrameInContainerView.size.width / 2.0 - height / 2.0;
@@ -193,7 +193,7 @@ static inline UIColor * WYPopoverBackgroundDismissColor() {
     CGFloat width = self.presentedViewController.preferredContentSize.width;
     CGFloat height = self.presentedViewController.preferredContentSize.height;
     CGRect sourceViewFrameInContainerView = [self sourceViewFrameInContainerView];
-    width = MIN(width, CGRectGetWidth(self.containerView.bounds) - CGRectGetMinX(sourceViewFrameInContainerView));
+    width = MIN(width, CGRectGetWidth(self.containerView.bounds) - CGRectGetMaxX(sourceViewFrameInContainerView));
     height = MIN(height, CGRectGetHeight(self.containerView.bounds));
     CGFloat x = CGRectGetMaxX(sourceViewFrameInContainerView);
     CGFloat y = sourceViewFrameInContainerView.origin.y + sourceViewFrameInContainerView.size.width / 2.0 - height / 2.0;

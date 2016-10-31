@@ -23,7 +23,7 @@ class DetailViewController: UIViewController {
         vc.wy_popoverPresentationController?.backgroundColor = UIColor.red
         vc.wy_popoverPresentationController?.sourceView = sender
         vc.wy_popoverPresentationController?.sourceRect = sender.bounds
-        vc.wy_popoverPresentationController?.permittedArrowDirections = .any
+        vc.wy_popoverPresentationController?.permittedArrowDirections = .down
         
         self.present(vc, animated: true, completion: nil)
     }
