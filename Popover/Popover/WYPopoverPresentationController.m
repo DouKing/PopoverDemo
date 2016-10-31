@@ -16,6 +16,12 @@ static inline UIColor * WYPopoverBackgroundDismissColor() {
     return [UIColor clearColor];
 }
 
+@interface UIBarButtonItem(Frame)
+
+- (CGRect)_frameInView:(UIView *)v;
+
+@end
+
 @interface WYPopoverPresentationController ()
 
 @property (nonatomic, strong) UIView *backgroundView;
@@ -207,6 +213,9 @@ static inline UIColor * WYPopoverBackgroundDismissColor() {
 }
 
 - (CGRect)sourceViewFrameInContainerView {
+    if (self.barButtonItem) {
+        return [self.barButtonItem _frameInView:self.containerView];
+    }
     return [self.containerView convertRect:self.sourceRect fromView:self.sourceView];
 }
 
@@ -255,6 +264,25 @@ static inline UIColor * WYPopoverBackgroundDismissColor() {
         _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_handleTapGestureAction:)];
     }
     return _tapGesture;
+}
+
+@end
+
+@implementation UIBarButtonItem(Frame)
+
+- (CGRect)_frameInView:(UIView *)v {
+    UIView *theView = self.customView;
+    if (!theView.superview && [self respondsToSelector:@selector(view)]) {
+        theView = [self performSelector:@selector(view)];
+    }
+    if (theView) {
+        UIView *parentView = theView.superview;
+        CGRect rect = theView.bounds;
+        rect.size.height = parentView.bounds.size.height - theView.frame.origin.y;
+        return [theView convertRect:rect toView:v];
+    } else {
+        return CGRectZero;
+    }
 }
 
 @end

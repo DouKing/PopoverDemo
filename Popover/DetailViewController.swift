@@ -23,7 +23,18 @@ class DetailViewController: UIViewController {
         vc.wy_popoverPresentationController?.backgroundColor = UIColor.red
         vc.wy_popoverPresentationController?.sourceView = sender
         vc.wy_popoverPresentationController?.sourceRect = sender.bounds
-        vc.wy_popoverPresentationController?.permittedArrowDirections = .down
+        vc.wy_popoverPresentationController?.permittedArrowDirections = .any
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func _presentForPopover(_ sender: UIBarButtonItem) {
+        let vc = PopoverViewController()
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = self.animator
+        vc.wy_popoverPresentationController?.backgroundColor = UIColor.red
+        vc.wy_popoverPresentationController?.barButtonItem = sender
+        vc.wy_popoverPresentationController?.permittedArrowDirections = .up
         
         self.present(vc, animated: true, completion: nil)
     }

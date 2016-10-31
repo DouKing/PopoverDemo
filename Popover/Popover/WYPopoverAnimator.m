@@ -34,6 +34,7 @@ typedef NS_ENUM(NSInteger, WYPopoverTransitionType) {
     popover.backgroundColor = self.popover.backgroundColor;
     popover.sourceView = self.popover.sourceView;
     popover.sourceRect = self.popover.sourceRect;
+    popover.barButtonItem = self.popover.barButtonItem;
     popover.permittedArrowDirections = self.popover.permittedArrowDirections;
     self.popover = popover;
     return self.popover;
