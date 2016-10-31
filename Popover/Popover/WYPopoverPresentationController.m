@@ -31,6 +31,7 @@ static inline UIColor * WYPopoverBackgroundDismissColor() {
     self.arrowView.frame = [self sourceViewFrameInContainerView];
     self.backgroundView.frame = self.containerView.bounds;
     self.presentedView.frame = self.frameOfPresentedViewInContainerView;
+    [self _configArrowViewRotation];
 }
 
 - (void)presentationTransitionWillBegin {
@@ -87,12 +88,27 @@ static inline UIColor * WYPopoverBackgroundDismissColor() {
 
 - (UIView *)presentedView {
     UIView *v = self.presentedViewController.view;
+    v.backgroundColor = self.backgroundColor;
     v.layer.cornerRadius = 5;
     v.clipsToBounds = YES;
     return v;
 }
 
 #pragma mark - Private Methods
+
+- (void)_configArrowViewRotation {
+    switch (self.permittedArrowDirections) {
+        case UIPopoverArrowDirectionUp:
+        case UIPopoverArrowDirectionDown:
+        case UIPopoverArrowDirectionLeft:
+        case UIPopoverArrowDirectionRight:
+            [self _configArrowViewRotationWithArrowDirection:self.permittedArrowDirections];
+            break;
+        default:
+            [self _configArrowViewRotationWithArrowDirection:[self _realArrowDirection]];
+            break;
+    }
+}
 
 - (CGRect)_frameOfPresentedViewInContainerViewWithArrowDirection:(UIPopoverArrowDirection)permittedArrowDirections {
     switch (permittedArrowDirections) {
@@ -142,6 +158,7 @@ static inline UIColor * WYPopoverBackgroundDismissColor() {
     height = MIN(height, CGRectGetMinY(sourceViewFrameInContainerView));
     CGFloat x = sourceViewFrameInContainerView.origin.x + sourceViewFrameInContainerView.size.width / 2.0 - width / 2.0;
     x = MAX(x, 0);
+    x = MIN(x, CGRectGetWidth(self.containerView.bounds) - width);
     CGFloat y = CGRectGetMinY(sourceViewFrameInContainerView) - height;
     return CGRectMake(x, y, width, height);
 }
@@ -154,6 +171,7 @@ static inline UIColor * WYPopoverBackgroundDismissColor() {
     height = MIN(height, CGRectGetHeight(self.containerView.bounds) - CGRectGetMaxY(sourceViewFrameInContainerView));
     CGFloat x = sourceViewFrameInContainerView.origin.x + sourceViewFrameInContainerView.size.width / 2.0 - width / 2.0;
     x = MAX(x, 0);
+    x = MIN(x, CGRectGetWidth(self.containerView.bounds) - width);
     CGFloat y = CGRectGetMaxY(sourceViewFrameInContainerView);
     return CGRectMake(x, y, width, height);
 }
@@ -167,6 +185,7 @@ static inline UIColor * WYPopoverBackgroundDismissColor() {
     CGFloat x = CGRectGetMinX(sourceViewFrameInContainerView) - width;
     CGFloat y = sourceViewFrameInContainerView.origin.y + sourceViewFrameInContainerView.size.width / 2.0 - height / 2.0;
     y = MAX(y, 0);
+    y = MIN(y, CGRectGetHeight(self.containerView.bounds) - height);
     return CGRectMake(x, y, width, height);
 }
 
@@ -179,6 +198,7 @@ static inline UIColor * WYPopoverBackgroundDismissColor() {
     CGFloat x = CGRectGetMaxX(sourceViewFrameInContainerView);
     CGFloat y = sourceViewFrameInContainerView.origin.y + sourceViewFrameInContainerView.size.width / 2.0 - height / 2.0;
     y = MAX(y, 0);
+    y = MIN(y, CGRectGetHeight(self.containerView.bounds) - height);
     return CGRectMake(x, y, width, height);
 }
 
@@ -188,6 +208,26 @@ static inline UIColor * WYPopoverBackgroundDismissColor() {
 
 - (CGRect)sourceViewFrameInContainerView {
     return [self.containerView convertRect:self.sourceRect fromView:self.sourceView];
+}
+
+- (void)_configArrowViewRotationWithArrowDirection:(UIPopoverArrowDirection)permittedArrowDirections {
+    switch (permittedArrowDirections) {
+        case UIPopoverArrowDirectionUp:
+            self.arrowView.transform = CGAffineTransformIdentity;
+            break;
+        case UIPopoverArrowDirectionDown:
+            self.arrowView.transform = CGAffineTransformMakeRotation(M_PI);
+            break;
+        case UIPopoverArrowDirectionLeft:
+            self.arrowView.transform = CGAffineTransformMakeRotation(-M_PI_2);
+            break;
+        case UIPopoverArrowDirectionRight:
+            self.arrowView.transform = CGAffineTransformMakeRotation(M_PI_2);
+            break;
+        default:
+            self.arrowView.transform = CGAffineTransformIdentity;
+            break;
+    }
 }
 
 - (UIView *)backgroundView {
@@ -200,9 +240,12 @@ static inline UIColor * WYPopoverBackgroundDismissColor() {
 
 - (UIView *)arrowView {
     if (!_arrowView) {
-        _arrowView = [[UIImageView alloc] init];
-        _arrowView.contentMode = UIViewContentModeBottom;
-        _arrowView.backgroundColor = [UIColor redColor];
+        UIImage *image = [[UIImage imageNamed:@"img_arrow_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.contentMode = UIViewContentModeBottom;
+        imageView.tintColor = self.backgroundColor;
+        imageView.image = image;
+        _arrowView = imageView;
     }
     return _arrowView;
 }

@@ -11,7 +11,7 @@ import UIKit
 class SecondViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
     }
 
     @IBAction func _dismiss(_ sender: UIButton) {

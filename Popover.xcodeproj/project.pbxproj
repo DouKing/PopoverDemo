@@ -14,6 +14,8 @@
 		00B367E01DC323AF006F3587 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B367DF1DC323AF006F3587 /* DetailViewController.swift */; };
 		00B367E41DC32474006F3587 /* WYPopoverPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B367E31DC32474006F3587 /* WYPopoverPresentationController.m */; };
 		00B367E71DC324A7006F3587 /* WYPopoverAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B367E61DC324A7006F3587 /* WYPopoverAnimator.m */; };
+		00B367F71DC6ED35006F3587 /* img_arrow_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B367F51DC6ED35006F3587 /* img_arrow_icon@2x.png */; };
+		00B367F81DC6ED35006F3587 /* img_arrow_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00B367F61DC6ED35006F3587 /* img_arrow_icon@3x.png */; };
 		00F559511DC2283C0055F969 /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F5594D1DC2283C0055F969 /* CustomPresentationController.swift */; };
 		00F559521DC2283C0055F969 /* CustomTranstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F5594E1DC2283C0055F969 /* CustomTranstion.swift */; };
 		00F559531DC2283C0055F969 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F5594F1DC2283C0055F969 /* PopoverViewController.swift */; };
@@ -34,6 +36,8 @@
 		00B367E31DC32474006F3587 /* WYPopoverPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverPresentationController.m; sourceTree = "<group>"; };
 		00B367E51DC324A7006F3587 /* WYPopoverAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverAnimator.h; sourceTree = "<group>"; };
 		00B367E61DC324A7006F3587 /* WYPopoverAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverAnimator.m; sourceTree = "<group>"; };
+		00B367F51DC6ED35006F3587 /* img_arrow_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_arrow_icon@2x.png"; sourceTree = "<group>"; };
+		00B367F61DC6ED35006F3587 /* img_arrow_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_arrow_icon@3x.png"; sourceTree = "<group>"; };
 		00F5594D1DC2283C0055F969 /* CustomPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
 		00F5594E1DC2283C0055F969 /* CustomTranstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTranstion.swift; sourceTree = "<group>"; };
 		00F5594F1DC2283C0055F969 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +91,8 @@
 		00B367DE1DC3236D006F3587 /* Popover */ = {
 			isa = PBXGroup;
 			children = (
+				00B367F51DC6ED35006F3587 /* img_arrow_icon@2x.png */,
+				00B367F61DC6ED35006F3587 /* img_arrow_icon@3x.png */,
 				00B367E21DC32474006F3587 /* WYPopoverPresentationController.h */,
 				00B367E31DC32474006F3587 /* WYPopoverPresentationController.m */,
 				00B367E51DC324A7006F3587 /* WYPopoverAnimator.h */,
@@ -168,6 +174,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				003112B71DAA1E9700DC5FD0 /* LaunchScreen.storyboard in Resources */,
+				00B367F71DC6ED35006F3587 /* img_arrow_icon@2x.png in Resources */,
+				00B367F81DC6ED35006F3587 /* img_arrow_icon@3x.png in Resources */,
 				003112B41DAA1E9700DC5FD0 /* Assets.xcassets in Resources */,
 				003112B21DAA1E9700DC5FD0 /* Main.storyboard in Resources */,
 			);
